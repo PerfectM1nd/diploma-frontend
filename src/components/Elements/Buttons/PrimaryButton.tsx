@@ -49,7 +49,6 @@ export const PrimaryButton: FC<Props> = ({
 
 const useStyles = createUseStyles(({ disabled }: { disabled: boolean }) => ({
   container: {
-    marginTop: 20,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

@@ -1,25 +1,25 @@
 import React from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { LAYOUT_BACKGROUND_COLOR } from '@/theme';
-
-import { DialogBlock } from '../components/DialogBlock';
-
-export const Dialogs = () => {
+export const DialogEmptyDialogContent = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
-      <DialogBlock />
+      <div className={classes.label}>Выберите диалог или создайте новый</div>
     </div>
   );
 };
 
 const useStyles = createUseStyles({
+  label: {
+    fontSize: 20,
+  },
   container: {
-    backgroundColor: LAYOUT_BACKGROUND_COLOR,
-    flexGrow: 1,
     display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
     flexDirection: 'column',
+    flexGrow: 1,
   },
 });

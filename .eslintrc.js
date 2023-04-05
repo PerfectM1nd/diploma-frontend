@@ -4,7 +4,7 @@ module.exports = {
         node: true,
         es6: true,
     },
-    plugins: ["unused-imports"],
+    plugins: ["unused-imports", "jss"],
     parserOptions: { ecmaVersion: 8, sourceType: 'module' },
     ignorePatterns: ['node_modules/*'],
     extends: ['eslint:recommended'],
@@ -69,10 +69,13 @@ module.exports = {
                 '@typescript-eslint/no-explicit-any': ['off'],
 
                 'jsx-a11y/click-events-have-key-events': ['off'],
+                'jsx-a11y/no-static-element-interactions': ['off'],
 
                 'prettier/prettier': ['error', {}, { usePrettierrc: true }],
 
-                "unused-imports/no-unused-imports": ["warn"]
+                "unused-imports/no-unused-imports": ["warn"],
+
+                "jss/unused-classes": [2, "warn"],
             },
         },
     ],

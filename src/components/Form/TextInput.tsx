@@ -8,11 +8,19 @@ interface Props {
   type?: 'text' | 'email' | 'password';
   className?: string;
   label: string;
+  labelClassName?: string;
   value: string;
   setValue(value: string): void;
 }
 
-export const TextInput: FC<Props> = ({ type, className, label, value, setValue }) => {
+export const TextInput: FC<Props> = ({
+  type,
+  className,
+  label,
+  labelClassName,
+  value,
+  setValue,
+}) => {
   const classes = useStyles();
 
   const handleInputChange = (event: any) => {
@@ -22,7 +30,7 @@ export const TextInput: FC<Props> = ({ type, className, label, value, setValue }
   return (
     <InputWrapper
       label={label}
-      labelClassName={classes.label}
+      labelClassName={clsx(classes.label, labelClassName)}
       containerClassName={classes.inputWrapper}
     >
       <input
@@ -49,11 +57,5 @@ const useStyles = createUseStyles({
   label: {
     color: 'white',
     fontSize: 15,
-  },
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: '100%',
   },
 });

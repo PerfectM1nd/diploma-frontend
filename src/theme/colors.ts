@@ -3,6 +3,7 @@ export const PRIMARY_COLOR_LIGHTENED = 'rgb(104, 89, 172)';
 export const SECONDARY_COLOR = 'rgb(102, 91, 152)';
 export const LAYOUT_BACKGROUND_COLOR = 'rgb(10, 5, 33)';
 export const LAYOUT_LIGHT_BACKGROUND_COLOR = 'rgb(30, 24, 60)';
+export const BACKDROP_COLOR = 'rgba(0,0,0,0.3)';
 
 export const TEXT_PRIMARY_COLOR = '#4794FF';
 export const LIGHTENED_PRIMARY_COLOR = '#8ebdff';
