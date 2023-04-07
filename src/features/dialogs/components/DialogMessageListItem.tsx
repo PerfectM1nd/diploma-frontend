@@ -38,7 +38,7 @@ const useStyles = createUseStyles({
     width: 'max-content',
     maxWidth: '60%',
     padding: 10,
-    borderRadius: 15,
+    borderRadius: 20,
     backgroundColor: 'white',
     color: 'black',
     marginBottom: 10,

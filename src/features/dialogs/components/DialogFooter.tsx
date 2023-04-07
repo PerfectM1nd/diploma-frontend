@@ -4,6 +4,7 @@ import { createUseStyles } from 'react-jss';
 import { useAppDispatch } from '@/app/hooks';
 import { sendMessage } from '@/features/dialogs';
 import { PRIMARY_COLOR_LIGHTENED } from '@/theme';
+import { rc4 } from '@/utils/rc4';
 
 import { useCurrentViewDialog } from '../hooks/useCurrentViewDialog';
 
@@ -23,7 +24,7 @@ export const DialogFooter = () => {
     dispatch(
       sendMessage({
         dialogId: dialog.id,
-        text: messageText,
+        text: rc4('ENCRYPTION_KEY', messageText),
       })
     );
     setMessageText('');
