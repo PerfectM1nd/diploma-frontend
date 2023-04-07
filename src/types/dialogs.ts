@@ -1,16 +1,18 @@
-import { User } from '@/types/user';
+interface DialogUser {
+  id: number;
+  login: string;
+}
 
 export interface Dialog {
   id: number;
-  users: User[];
+  users: DialogUser[];
   created_at: string;
-  messages: Message[];
 }
 
 export interface Message {
   id: number;
-  dialogId: number;
+  dialog_id: number;
   text: string;
-  ownerId: number;
+  owner_id: number;
   created_at: string;
 }

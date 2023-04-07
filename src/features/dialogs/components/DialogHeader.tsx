@@ -9,9 +9,19 @@ export const DialogHeader = () => {
   const dialog = useCurrentViewDialog();
   const opponent = useCurrentViewDialogOpponent();
 
-  return <div className={classes.container}></div>;
+  return (
+    <div className={classes.container}>
+      <div className={classes.opponentInfoBlock}>
+        <div className={classes.opponentLogin}>{opponent?.login}</div>
+      </div>
+    </div>
+  );
 };
 
 const useStyles = createUseStyles({
+  opponentLogin: {
+    fontSize: 20,
+  },
+  opponentInfoBlock: {},
   container: {},
 });

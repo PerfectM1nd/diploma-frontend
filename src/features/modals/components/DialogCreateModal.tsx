@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { DialogModal, PrimaryButton } from '@/components/Elements';
 import { Form } from '@/components/Form';
 import { TextInput } from '@/components/Form/TextInput';
+import { createDialog } from '@/features/dialogs';
 import { setCreateDialogModalOpen } from '@/features/modals';
 
 export const DialogCreateModal = () => {
@@ -19,24 +20,27 @@ export const DialogCreateModal = () => {
     dispatch(setCreateDialogModalOpen(false));
   };
 
-  const handleDialogCreate = async (values: any) => {};
+  const handleDialogCreate = async (event: SubmitEvent) => {
+    event.preventDefault();
+    setDialogCreating(true);
+    await dispatch(createDialog(opponentLogin));
+    setDialogCreating(false);
+  };
 
   return (
     <DialogModal open={open} closeCallback={handleModalClose}>
-      <div className={classes.container}>
-        <Form onSubmit={handleDialogCreate} className={classes.form}>
-          <TextInput
-            value={opponentLogin}
-            setValue={setOpponentLogin}
-            type="text"
-            label="Логин адресата"
-            labelClassName={classes.inputLabel}
-          />
-          <div>
-            <PrimaryButton loading={dialogCreating} submit buttonText="СОЗДАТЬ" />
-          </div>
-        </Form>
-      </div>
+      <Form onSubmit={handleDialogCreate} className={classes.form}>
+        <TextInput
+          value={opponentLogin}
+          setValue={setOpponentLogin}
+          type="text"
+          label="Логин адресата"
+          labelClassName={classes.inputLabel}
+        />
+        <div>
+          <PrimaryButton loading={dialogCreating} submit buttonText="СОЗДАТЬ" />
+        </div>
+      </Form>
     </DialogModal>
   );
 };
@@ -51,5 +55,4 @@ const useStyles = createUseStyles({
     alignItems: 'center',
     flexDirection: 'column',
   },
-  container: {},
 });

@@ -20,7 +20,9 @@ export const Home = () => {
   return (
     <div className={classes.container}>
       <div className={classes.buttonsContainer}>
-        <PrimaryButton buttonText="Войти в систему" onClick={handleLoginButtonClick} />
+        <div className={classes.loginButtonContainer}>
+          <PrimaryButton buttonText="Войти в систему" onClick={handleLoginButtonClick} />
+        </div>
         <PrimaryButton buttonText="Зарегистрироваться" onClick={handleRegisterButtonClick} />
       </div>
     </div>
@@ -28,6 +30,9 @@ export const Home = () => {
 };
 
 const useStyles = createUseStyles({
+  loginButtonContainer: {
+    marginBottom: 20,
+  },
   buttonsContainer: {
     width: 400,
     display: 'flex',

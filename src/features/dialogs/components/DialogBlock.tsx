@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { getMyDialogs } from '@/features/dialogs';
 import { LAYOUT_LIGHT_BACKGROUND_COLOR, PRIMARY_COLOR } from '@/theme';
 
 import { DialogContent } from './DialogContent';
@@ -10,6 +12,14 @@ import { DialogsList } from './DialogsList';
 
 export const DialogBlock = () => {
   const classes = useStyles();
+  const dispatch = useAppDispatch();
+  const dialogs = useAppSelector((state) => state.dialogs.dialogs);
+
+  useEffect(() => {
+    if (!dialogs) {
+      dispatch(getMyDialogs());
+    }
+  }, [dialogs, dispatch]);
 
   return (
     <div className={classes.container}>
@@ -55,7 +65,6 @@ const useStyles = createUseStyles({
     alignItems: 'center',
     fontSize: 18,
     borderBottom: '1px solid ' + PRIMARY_COLOR,
-    borderRight: '1px solid ' + PRIMARY_COLOR,
     padding: '0 20px',
     backgroundColor: LAYOUT_LIGHT_BACKGROUND_COLOR,
   },
