@@ -55,7 +55,6 @@ const useStyles = createUseStyles({
     marginTop: 5,
   },
   label: {
-    color: 'white',
     fontSize: 15,
   },
 });

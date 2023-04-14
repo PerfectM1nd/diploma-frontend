@@ -72,7 +72,7 @@ export const RegisterForm: FC<Props> = ({ onSuccess }) => {
         </div>
       </Form>
       <div className={classes.linkContainer}>
-        <Link to="../login" className={classes.registerLink}>
+        <Link to="/auth/login" className={classes.registerLink}>
           Войти
         </Link>
       </div>
@@ -87,7 +87,6 @@ const useStyles = createUseStyles({
   registerLink: {
     fontWeight: 500,
     textDecoration: 'none',
-    color: 'white',
     '&:hover': {
       textDecoration: 'underline',
     },

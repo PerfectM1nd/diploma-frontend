@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { useAppSelector } from '@/app/hooks';
+import { PRIMARY_COLOR } from '@/theme';
 import { Message } from '@/types/dialogs';
 
 interface Props {
@@ -39,8 +40,8 @@ const useStyles = createUseStyles({
     maxWidth: '60%',
     padding: 10,
     borderRadius: 20,
-    backgroundColor: 'white',
-    color: 'black',
+    backgroundColor: PRIMARY_COLOR,
+    color: 'white',
     marginBottom: 10,
     margin: '0 10px',
   },

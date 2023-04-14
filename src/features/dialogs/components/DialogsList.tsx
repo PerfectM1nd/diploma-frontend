@@ -4,9 +4,7 @@ import { createUseStyles } from 'react-jss';
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { PrimaryButton } from '@/components/Elements';
 import { setCreateDialogModalOpen } from '@/features/modals';
-import { LAYOUT_LIGHT_BACKGROUND_COLOR } from '@/theme';
-
-import { DialogCreateModal } from '../../modals/components/DialogCreateModal';
+import { LAYOUT_LIGHT_BACKGROUND_COLOR, PRIMARY_COLOR } from '@/theme';
 
 import DialogsListItem from './DialogsListItem';
 
@@ -21,6 +19,9 @@ export const DialogsList = () => {
 
   return dialogs?.length ? (
     <ul className={classes.container}>
+      <li className={classes.listCreateDialogButtonContainer}>
+        <PrimaryButton buttonText="Создать диалог" onClick={handleCreateDialogButtonClick} />
+      </li>
       {dialogs.map((dialog) => (
         <DialogsListItem key={dialog.id} dialog={dialog} />
       ))}
@@ -31,12 +32,18 @@ export const DialogsList = () => {
       <div className={classes.createDialogButtonContainer}>
         <PrimaryButton buttonText="Создать диалог" onClick={handleCreateDialogButtonClick} />
       </div>
-      <DialogCreateModal />
     </div>
   );
 };
 
 const useStyles = createUseStyles({
+  listCreateDialogButtonContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: '20px 0',
+    borderBottom: '1px solid ' + PRIMARY_COLOR,
+  },
   createDialogButtonContainer: {
     marginTop: 20,
   },

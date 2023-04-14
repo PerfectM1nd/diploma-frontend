@@ -3,6 +3,7 @@ import { createUseStyles } from 'react-jss';
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
 import { getMyDialogs } from '@/features/dialogs';
+import { DialogCreateModal, NewDialogRequestModal } from '@/features/modals';
 import { LAYOUT_LIGHT_BACKGROUND_COLOR, PRIMARY_COLOR } from '@/theme';
 
 import { DialogContent } from './DialogContent';
@@ -34,6 +35,8 @@ export const DialogBlock = () => {
         <div className={classes.rightBlockHeaderContainer}>Список диалогов</div>
         <DialogsList />
       </section>
+      <DialogCreateModal />
+      <NewDialogRequestModal />
     </div>
   );
 };
@@ -82,7 +85,6 @@ const useStyles = createUseStyles({
   container: {
     display: 'flex',
     justifyContent: 'center',
-    color: 'white',
     flexGrow: 1,
   },
 });
