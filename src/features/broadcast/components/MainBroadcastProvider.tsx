@@ -2,6 +2,7 @@ import Echo from 'laravel-echo';
 import { useEffect } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { WEBSOCKET_URL } from '@/config';
 import { setCompanion, setIncomingOfferStatus, setOutgoingOfferStatus } from '@/features/webrtc';
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -29,7 +30,7 @@ export const MainBroadcastProvider = () => {
           Authorization: 'Bearer ' + authToken,
         },
       },
-      host: 'http://127.0.0.1:6001/',
+      host: WEBSOCKET_URL,
       path: '/socket.io',
     });
 
