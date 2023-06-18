@@ -10,7 +10,7 @@ export const useCurrentViewDialog = () => {
   const [dialog, setDialog] = useState<Dialog | null>(null);
 
   useEffect(() => {
-    const dialog = dialogs?.find((dialog) => dialog.id === currentViewDialogId);
+    const dialog = dialogs?.find((dialog: any) => dialog.id === currentViewDialogId);
     setDialog(dialog || null);
   }, [currentViewDialogId, dialogs]);
 

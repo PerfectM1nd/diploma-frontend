@@ -16,10 +16,10 @@ export type LoginResponse = {
 
 export const loginRequest = async (data: LoginDTO): Promise<LoginResponse> => {
   try {
-    const response = await api.post('/auth/login', data);
+    const response = await api.post('login', data);
     return response.data;
   } catch (e: any) {
-    if (e.response.data.status === HttpStatusCode.Unauthorized) {
+    if (e.response.data.status === HttpStatusCode.BadRequest) {
       alert('Неверный логин или пароль');
     }
     throw e;

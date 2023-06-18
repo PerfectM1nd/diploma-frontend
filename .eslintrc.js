@@ -42,7 +42,7 @@ module.exports = {
                         patterns: ['@/features/*/*'],
                     },
                 ],
-                'linebreak-style': ['error', 'unix'],
+                'linebreak-style': ['error', 'windows'],
                 'react/prop-types': 'off',
 
                 'import/order': [
@@ -67,6 +67,7 @@ module.exports = {
                 '@typescript-eslint/explicit-module-boundary-types': ['off'],
                 '@typescript-eslint/no-empty-function': ['off'],
                 '@typescript-eslint/no-explicit-any': ['off'],
+                '@typescript-eslint/ban-ts-comment': ['off'],
 
                 'jsx-a11y/click-events-have-key-events': ['off'],
                 'jsx-a11y/no-static-element-interactions': ['off'],

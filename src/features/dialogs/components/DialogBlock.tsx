@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { createUseStyles } from 'react-jss';
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { getMyDialogs } from '@/features/dialogs';
-import { DialogCreateModal, NewDialogRequestModal } from '@/features/modals';
+import { addDialog } from '@/features/dialogs';
+import { DialogCreateModal, DialogRequestModal } from '@/features/modals';
 import { LAYOUT_LIGHT_BACKGROUND_COLOR, PRIMARY_COLOR } from '@/theme';
+import { User } from '@/types';
+import { Dialog } from '@/types/dialogs';
 
 import { DialogContent } from './DialogContent';
 import { DialogFooter } from './DialogFooter';
@@ -14,13 +16,25 @@ import { DialogsList } from './DialogsList';
 export const DialogBlock = () => {
   const classes = useStyles();
   const dispatch = useAppDispatch();
+  const authUser = useAppSelector((state) => state.auth.user);
+  const outgoingOfferStatus = useAppSelector((state) => state.webrtc.outgoingOfferStatus);
+  const incomingOfferStatus = useAppSelector((state) => state.webrtc.incomingOfferStatus);
+  const companion = useAppSelector((state) => state.webrtc.companion);
   const dialogs = useAppSelector((state) => state.dialogs.dialogs);
 
+  const isDialogExist = (users: User[]) => {
+    return (
+      dialogs &&
+      !!dialogs.find((dialog: Dialog) => JSON.stringify(dialog.users) === JSON.stringify(users))
+    );
+  };
+
   useEffect(() => {
-    if (!dialogs) {
-      dispatch(getMyDialogs());
-    }
-  }, [dialogs, dispatch]);
+    if ((outgoingOfferStatus !== 'accepted' && incomingOfferStatus !== 'accepted') || !companion)
+      return;
+    if (isDialogExist([companion, authUser])) return;
+    dispatch(addDialog([companion, authUser]));
+  }, [outgoingOfferStatus, incomingOfferStatus, companion]);
 
   return (
     <div className={classes.container}>
@@ -36,7 +50,7 @@ export const DialogBlock = () => {
         <DialogsList />
       </section>
       <DialogCreateModal />
-      <NewDialogRequestModal />
+      <DialogRequestModal />
     </div>
   );
 };

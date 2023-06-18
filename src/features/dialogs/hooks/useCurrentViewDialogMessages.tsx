@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import { useAppDispatch, useAppSelector } from '@/app/hooks';
-import { getDialogMessages } from '@/features/dialogs';
 import { Message } from '@/types/dialogs';
 
 export const useCurrentViewDialogMessages = () => {
@@ -18,7 +17,7 @@ export const useCurrentViewDialogMessages = () => {
     }
     const messages = dialogMessages[currentViewDialogId];
     if (!messages?.length) {
-      dispatch(getDialogMessages(currentViewDialogId));
+      // TODO get dialog messages
     }
     setMessages(messages || []);
   }, [currentViewDialogId, dialogMessages, dispatch]);

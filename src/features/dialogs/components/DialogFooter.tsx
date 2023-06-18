@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { createUseStyles } from 'react-jss';
 
-import { useAppDispatch } from '@/app/hooks';
-import { sendMessage } from '@/features/dialogs';
+import { useAppDispatch, useAppSelector } from '@/app/hooks';
+import { addDialogMessage } from '@/features/dialogs';
+import { WebRTCContext } from '@/providers/app';
 import { PRIMARY_COLOR_LIGHTENED } from '@/theme';
 
 import { useCurrentViewDialog } from '../hooks/useCurrentViewDialog';
 
 export const DialogFooter = () => {
   const classes = useStyles();
-  const dispatch = useAppDispatch();
   const dialog = useCurrentViewDialog();
+  const dispatch = useAppDispatch();
+  const { sendChannel, receiveChannel } = useContext(WebRTCContext);
+  const companion = useAppSelector((state) => state.webrtc.companion);
+  const authUser = useAppSelector((state) => state.auth.user);
 
   const [messageText, setMessageText] = useState('');
 
@@ -19,15 +23,18 @@ export const DialogFooter = () => {
   };
 
   const handleMessageSend = () => {
-    if (!dialog?.id) return;
-    dispatch(
-      sendMessage({
-        dialogId: dialog.id,
-        text: messageText,
-      })
-    );
+    if (!sendChannel) return;
+    sendChannel.send(messageText);
+    dispatch(addDialogMessage({ text: messageText, ownerId: authUser.id }));
     setMessageText('');
   };
+
+  useEffect(() => {
+    if (!receiveChannel) return;
+    receiveChannel.onmessage = (message) => {
+      dispatch(addDialogMessage({ text: message.data, ownerId: companion.id }));
+    };
+  }, [receiveChannel]);
 
   return (
     <div className={classes.container}>

@@ -3,7 +3,7 @@ import Axios, { AxiosRequestConfig } from 'axios';
 import { API_URL } from '@/config';
 
 export const api = Axios.create({
-  baseURL: API_URL,
+  baseURL: API_URL + '/api/v1',
   headers: {
     Accept: 'application/json',
     'Content-type': 'application/json',

@@ -1,2 +1,2 @@
 export * from './DialogCreateModal';
-export * from './NewDialogRequestModal';
+export * from './DialogRequestModal';

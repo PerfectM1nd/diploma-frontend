@@ -15,7 +15,7 @@ const DialogMessageListItem: FC<Props> = ({ message }) => {
   const authUser = useAppSelector((state) => state.auth.user);
 
   const isMyMessage = () => {
-    return +message.owner_id === authUser.id;
+    return +message.ownerId === authUser.id;
   };
 
   return (

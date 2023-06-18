@@ -15,7 +15,7 @@ export const fetchMeRequest = async (
   dispatch: ThunkDispatch<unknown, unknown, AnyAction>
 ): Promise<FetchMeResponse> => {
   try {
-    const response = await api.get('/auth/me');
+    const response = await api.get('me');
     return response.data;
   } catch (e: any) {
     if (e.response.data.status === HttpStatusCode.Unauthorized) {

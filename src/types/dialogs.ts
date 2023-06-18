@@ -6,13 +6,18 @@ interface DialogUser {
 export interface Dialog {
   id: number;
   users: DialogUser[];
-  created_at: string;
+  createdAt: number;
+}
+
+export interface AddMessageAction {
+  text: string;
+  ownerId: number;
 }
 
 export interface Message {
   id: number;
-  dialog_id: number;
+  dialogId: number;
   text: string;
-  owner_id: number;
-  created_at: string;
+  ownerId: number;
+  createdAt: number;
 }

@@ -15,6 +15,6 @@ export type RegisterResponse = {
 };
 
 export const registerRequest = async (data: RegisterDTO): Promise<RegisterResponse> => {
-  const response = await api.post('/auth/register', data);
+  const response = await api.post('register', data);
   return response.data;
 };

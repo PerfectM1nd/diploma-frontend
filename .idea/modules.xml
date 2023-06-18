@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/diploma-frontend.iml" filepath="$PROJECT_DIR$/.idea/diploma-frontend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../nextjs-docker/frontend/.idea/nextjs-docker.iml" filepath="$PROJECT_DIR$/../nextjs-docker/frontend/.idea/nextjs-docker.iml" />
     </modules>
   </component>
 </project>

@@ -22,7 +22,7 @@ export const DialogsList = () => {
       <li className={classes.listCreateDialogButtonContainer}>
         <PrimaryButton buttonText="Создать диалог" onClick={handleCreateDialogButtonClick} />
       </li>
-      {dialogs.map((dialog) => (
+      {dialogs.map((dialog: any) => (
         <DialogsListItem key={dialog.id} dialog={dialog} />
       ))}
     </ul>
