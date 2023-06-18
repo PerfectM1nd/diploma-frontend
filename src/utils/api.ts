@@ -7,6 +7,7 @@ export const api = Axios.create({
   headers: {
     Accept: 'application/json',
     'Content-type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
   },
 });
 
