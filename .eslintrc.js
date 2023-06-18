@@ -42,7 +42,7 @@ module.exports = {
                         patterns: ['@/features/*/*'],
                     },
                 ],
-                'linebreak-style': ['error', 'windows'],
+                'linebreak-style': 'off',
                 'react/prop-types': 'off',
 
                 'import/order': [
