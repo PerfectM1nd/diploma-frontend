@@ -33,10 +33,10 @@ const WebRTCProvider = () => {
 
   useEffect(() => {
     (async () => {
-      if (firstLoad.current) {
-        firstLoad.current = false;
-        return;
-      }
+      // if (firstLoad.current) {
+      //   firstLoad.current = false;
+      //   return;
+      // }
       subscribe();
       amISender() && (await createOffer());
       return () => {
